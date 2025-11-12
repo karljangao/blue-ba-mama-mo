@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Moving Shark Animation</title>
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background: linear-gradient(to bottom, #003366, #001a33);
+        overflow: hidden;
+    }
+
+    /* Shark Container */
+    .shark {
+        position: absolute;
+        bottom: 40%;
+        left: -300px; /* start outside the screen */
+        width: 250px;
+        animation: swim 12s linear infinite;
+    }
+
+    /* Shark Body */
+    .shark-body {
+        width: 250px;
+        height: 80px;
+        background: #5d7d8a;
+        border-radius: 40px 120px 120px 40px;
+        position: relative;
+    }
+
+    /* Dorsal fin */
+    .shark-body:before {
+        content: "";
+        position: absolute;
+        top: -40px;
+        left: 80px;
+        width: 60px;
+        height: 80px;
+        background: #4a6773;
+        clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    }
+
+    /* Tail */
+    .tail {
+        position: absolute;
+        right: -50px;
+        top: 20px;
+        width: 60px;
+        height: 60px;
+        background: #5d7d8a;
+        clip-path: polygon(0 50%, 100% 0%, 100% 100%);
+    }
+
+    /* Eye */
+    .eye {
+        position: absolute;
+        left: 30px;
+        top: 25px;
+        width: 15px;
+        height: 15px;
+        background: white;
+        border-radius: 50%;
+    }
+
+    .eye::after {
+        content: "";
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        width: 7px;
+        height: 7px;
+        background: black;
+        border-radius: 50%;
+    }
+
+    /* Mouth */
+    .mouth {
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        width: 60px;
+        height: 30px;
+        background: #000;
+        border-radius: 0 0 60px 60px;
+        overflow: hidden;
+    }
+
+    /* Teeth */
+    .mouth::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 60px;
+        height: 20px;
+        background: repeating-linear-gradient(
+            to right,
+            white 0 5px,
+            transparent 5px 10px
+        );
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    }
+
+    /* Animation */
+    @keyframes swim {
+        0% {
+            transform: translateX(0);
+        }
+        50% {
+            transform: translate(120vw, -30px) scaleX(-1);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+</style>
+</head>
+<body>
+
+<div class="shark">
+    <div class="shark-body">
+        <div class="eye"></div>
+        <div class="mouth"></div>
+        <div class="tail"></div>
+    </div>
+</div>
+
+</body>
+</html>
